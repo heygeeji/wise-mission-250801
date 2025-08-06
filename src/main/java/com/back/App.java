@@ -25,7 +25,7 @@ public class App {
                 wiseSaying.saying = saying;
                 wiseSaying.author = author;
 
-                System.out.println("%d번 명언이 등록되었습니다.".formatted(idx));
+                System.out.println("%d번 명언이 등록되었습니다.".formatted(idx++));
             }
         }
     }
