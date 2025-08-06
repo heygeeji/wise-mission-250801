@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class App {
     Scanner sc = new Scanner(System.in);
+    int idx = 1;
 
     void run() {
         System.out.println("== 명언 앱 ==");
@@ -23,6 +24,8 @@ public class App {
                 WiseSaying wiseSaying = new WiseSaying();
                 wiseSaying.saying = saying;
                 wiseSaying.author = author;
+
+                System.out.println("%d번 명언이 등록되었습니다.".formatted(idx));
             }
         }
     }
