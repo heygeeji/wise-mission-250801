@@ -39,16 +39,23 @@ public class App {
                             .formatted(wiseSayings[i].registerNumber, wiseSayings[i].author, wiseSayings[i].saying));
                 }
             } else if (order.startsWith("삭제")) {
-                int id = Integer.parseInt(order.split("\\?")[1].split("=")[1]);
+                int deleteId = Integer.parseInt(order.split("\\?")[1].split("=")[1]);
+                boolean delete = false;
 
-                for (int i = 0; i < idx; i++) {
-                    if (wiseSayings[i].registerNumber == id) {
-                        System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
-                        for (int j = id; j < idx - 1; j++) {
+                for (int i = 0; i < lastRegisterNumber - 1; i++) {
+                    if (wiseSayings[i].registerNumber == deleteId) {
+                        delete = true;
+                        System.out.println("%d번 명언이 삭제되었습니다.".formatted(deleteId));
+                        for (int j = deleteId - 1; j < lastRegisterNumber - 2; j++) {
                             wiseSayings[j] = wiseSayings[j + 1];
                         }
+                        lastRegisterNumber--;
                         break;
                     }
+                }
+
+                if (delete == false) {
+                    System.out.println("%d번 명언은 존재하지 않습니다.".formatted(deleteId));
                 }
 
 
