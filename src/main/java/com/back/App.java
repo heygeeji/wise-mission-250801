@@ -11,7 +11,7 @@ public class App {
     void run() {
         System.out.println("== 명언 앱 ==");
 
-        while(true) {
+        while (true) {
             System.out.print("명령) ");
             String order = sc.nextLine();
 
@@ -59,6 +59,31 @@ public class App {
                 }
 
 
+            } else if (order.startsWith("수정")) {
+                int modifyId = Integer.parseInt(order
+                        .split("\\?")[1]
+                        .split("=")[1]);
+                boolean modifyTF = false;
+
+                for (int i = 0; i < lastRegisterNumber - 1; i++) {
+                    if (wiseSayings[i].registerNumber == modifyId) {
+                        modifyTF = true;
+                        System.out.println("명언(기존) : %s".formatted(wiseSayings[i].saying));
+                        System.out.print("명언 : ");
+                        String newSaying = sc.nextLine();
+                        wiseSayings[i].saying = newSaying;
+
+                        System.out.println("작가(기존) : %s".formatted(wiseSayings[i].author));
+                        System.out.print("작가 : ");
+                        String newAuthor = sc.nextLine();
+                        wiseSayings[i].author = newAuthor;
+
+                    }
+                }
+
+                if (modifyTF == false) {
+                    System.out.println("%d번 명언은 존재하지 않습니다.".formatted(modifyId));
+                }
             }
         }
     }
