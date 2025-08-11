@@ -38,6 +38,20 @@ public class App {
                     System.out.println("%d / %s / %s"
                             .formatted(wiseSayings[i].registerNumber, wiseSayings[i].author, wiseSayings[i].saying));
                 }
+            } else if (order.startsWith("삭제")) {
+                int id = Integer.parseInt(order.split("\\?")[1].split("=")[1]);
+
+                for (int i = 0; i < idx; i++) {
+                    if (wiseSayings[i].registerNumber == id) {
+                        System.out.println("%d번 명언이 삭제되었습니다.".formatted(id));
+                        for (int j = id; j < idx - 1; j++) {
+                            wiseSayings[j] = wiseSayings[j + 1];
+                        }
+                        break;
+                    }
+                }
+
+
             }
         }
     }
